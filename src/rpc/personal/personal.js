@@ -39,9 +39,24 @@ class Personal {
       .send('personal_sendTransaction', inOptions(options), password);
   }
 
+  signTransaction (options, password) {
+    return this._provider
+      .send('personal_signTransaction', inOptions(options), password);
+  }
+
   unlockAccount (account, password, duration = 1) {
     return this._provider
       .send('personal_unlockAccount', inAddress(account), password, inNumber16(duration));
+  }
+
+  sign (options, password) {
+    return this._provider
+      .send('personal_sign', inOptions(options), password);
+  }
+
+  ecRecover (options, password) {
+    return this._provider
+      .send('personal_ecRecover', inOptions(options), password);
   }
 }
 
